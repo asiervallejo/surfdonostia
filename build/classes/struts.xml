@@ -1,0 +1,61 @@
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.3.dtd"> 
+   
+<struts>  
+
+<package extends="struts-default, json-default" name="default" >
+
+	<action name="inicio">
+		<result>inicio.jsp</result>
+	</action>
+	<action name="quienes">
+		<result>quienes.jsp</result>
+	</action>
+	<action name="contacto">
+		<result>contacto.jsp</result>
+	</action>
+	<action name="servicios" method="servicios" class="com.web.dispatcher.ServicioDispatcher">
+		<result name="success">servicios.jsp</result>
+	</action>
+	<action name="enviarEmail" method="enviarEmail" class="com.web.dispatcher.ContactoDispatcher">
+		<result name="success">inicio.jsp</result>
+		<result name="error">contacto.jsp</result>
+	</action>
+	
+	<action name="listarServicios" method="listarServicios" class="com.web.dispatcher.ServicioDispatcher">
+		<result type="json"></result>
+	</action>
+	<action name="formServicio">
+		<result>formServicio.jsp</result>
+	</action>
+	
+	<action name="agregarServicio" method="agregarServicio" class="com.web.dispatcher.ServicioDispatcher">
+		<result name="success">servicios.jsp</result>
+		<result name="error">formServicio.jsp</result>
+	</action>
+	<action name="eliminarServicio" method="eliminarServicio" class="com.web.dispatcher.ServicioDispatcher">
+		<result name="success">servicios.jsp</result>
+		<result name="error">error.jsp</result>
+	</action>
+
+	<action name="datosServicio" method="datosServicio" class="com.web.dispatcher.ServicioDispatcher">
+		<result name="success">formEditarServicio.jsp</result>
+		<result name="error">error.jsp</result>
+	</action>
+	
+	<action name="mostrarServicio" method="datosServicio" class="com.web.dispatcher.ServicioDispatcher">
+		<result name="success">mostrarServicio.jsp</result>
+		<result name="error">error.jsp</result>
+	</action>
+	
+	<action name="editarServicio" method="editarServicio" class="com.web.dispatcher.ServicioDispatcher">
+		<result name="success">servicios.jsp</result>
+		<result name="error">error.jsp</result>
+	</action>
+ 	
+</package>    
+
+</struts>
+
+
